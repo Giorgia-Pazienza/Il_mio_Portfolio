@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Giorgia</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            background-color: #800020;
+            color: white;
+            font-family: 'Times New Roman', Times, serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        header, section, footer {
+            padding: 20px;
+        }
+
+        /* NAVBAR */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+        }
+
+        .logo-container {
+            display: flex;
+            list-style: none;
+        }
+
+        .NavbarDestra {
+            display: flex;
+            list-style: none;
+            flex-direction: row; 
+            justify-content: space-evenly;
+            align-items: center;
+        }
+
+        li {
+            font-size: x-large;
+            margin: 0 15px;
+        }
+
+        a {
+            text-decoration: none;
+            color: white;
+            transition: opacity 0.2s;
+        }
+
+        a:hover {
+            opacity: 0.8;
+        }
+
+        hr {
+            border: none;
+            border-top: 2px solid white;
+            margin: 10px 0;
+        }
+
+        /* HAMBURGER MENU */
+        .hamburger {
+            width: 30px;
+            height: 22px;
+            display: none; 
+            flex-direction: column;
+            justify-content: space-between;
+            cursor: pointer;
+        }
+        
+        .hamburger_top, .hamburger_center, .hamburger_bottom {
+            height: 4px;
+            background-color: white;
+            border-radius: 2px;
+            width: 100%;
+        }
+
+        /* NAVBAR VERTICALE (Mobile) */
+        .NavbarVerticale {
+            display: none; 
+            list-style: none;
+            flex-direction: column;
+            background-color: #600018;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+        }
+
+        .NavbarVerticale.responsive {
+            display: flex;
+        }
+
+        .NavbarVerticale li {
+            margin: 10px 0;
+            text-align: center;
+        }
+
+        /* PRESENTAZIONI */
+        #presentazione, #presentazioneLavori {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin: 40px 0;
+            gap: 30px;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+
+        .testo-presentazione {
+            font-size: 1.4rem;
+            max-width: 800px;
+            line-height: 1.6;
+            text-align: justify;
+        }
+
+        .lista-competenze {
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            margin: 15px 0;
+            padding-left: 20px;
+            list-style-type: disc;
+        }
+
+        .lista-competenze li {
+            font-size: 1.2rem;
+            margin: 5px 0;
+        }
+
+        /* FOTO CON EFFETTO NEON */
+        #FotoMia {
+            width: 300px;
+            height: 300px;
+            max-width: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 2px solid #ff003c;
+            /* Effetto Neon Rosso */
+            box-shadow: 0 0 10px #ff003c, 0 0 20px #ff003c, inset 0 0 5px #ff003c;
+        }
+
+        /* Classe specifica per i media con effetto neon (es. video presentazione) */
+        .neon-media {
+            width: 400px;
+            max-width: 100%;
+            border-radius: 8px;
+            border: 2px solid #ff003c;
+            box-shadow: 0 0 10px #ff003c, 0 0 20px #ff003c;
+        }
+
+        /* LINGUAGGI UTILIZZATI */
+        #LinguaggiUtilizzati {
+            margin: 40px 0;
+            text-align: center;
+        }
+
+        #LinguaggiUtilizzati p {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+
+        .linguaggi {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin: 0 auto;
+            max-width: 90%;
+        }
+
+        .linguaggi img {
+            height: 40px;
+            width: auto;
+        }
+
+        /* PROGETTI */
+        #Project {
+            margin: 60px 0;
+        }
+
+        #Project > p {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            padding: 20px;
+        }
+
+        .project-card {
+            background-color: #990026; 
+            border: 2px solid white;
+            padding: 2rem;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .project-card:hover { 
+            transform: translateY(-5px); 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        
+        .project-info {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .project-info h3 { 
+            margin-bottom: 0.8rem; 
+            font-size: 1.5rem;
+        }
+        
+        .project-info p { 
+            font-size: 0.95rem; 
+            margin-bottom: 1.5rem; 
+            line-height: 1.4;
+            opacity: 0.9;
+        }
+
+        /* Normalizzazione dei media dentro le card dei progetti */
+        .project-card img, 
+        .project-card video {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 8px;
+            border: 2px solid white; /* Bordo bianco standard per coerenza */
+            box-shadow: none; /* Rimosso neon */
+            margin-top: auto; /* Spinge i media in basso allineandoli */
+            margin-bottom: 1.5rem;
+        }
+
+        .project-link {
+            font-weight: bold;
+            align-self: flex-start;
+        }
+
+        .sezione-intermedia {
+            text-align: center;
+            font-size: 1.6rem;
+            margin: 40px 0;
+            font-style: italic;
+        }
+
+        /* FOOTER */
+        footer {
+            margin-top: auto; 
+            border-top: 2px solid white;
+            background-color: white;
+            color: #800020;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            align-items: center; 
+            text-align: center;
+            padding: 30px 20px;
+        }
+
+        footer h3 {
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+            width: 100%;
+        }
+
+        /* Contenitore contatti centrato ma allineato internamente a sinistra */
+        .footer-contacts-wrapper {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .footer-contacts {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            align-items: flex-start; 
+            text-align: left;
+        }
+
+        .footer-contacts li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.2rem;
+            margin: 0; 
+        }
+
+        .footer-contacts a {
+            color: #800020;
+            text-decoration: underline;
+        }
+
+        /* CAROSELLO FOTO */  
+        .carousel-container {
+            width: 90%;
+            max-width: 1000px;
+            position: relative;
+            overflow: hidden; 
+            border-radius: 10px;
+            padding: 10px 0;
+            margin: 20px auto;
+        }
+        
+        .carousel-slide {
+            display: flex;
+            gap: 15px; 
+            transition: transform 0.5s ease-in-out; 
+        }
+        
+        /* Normalizzazione foto carosello */
+        .carousel-slide img {
+            width: 300px; 
+            height: 200px; /* Altezza fissa uniforme */
+            object-fit: cover; /* Ritaglio armonioso senza deformare */
+            flex-shrink: 0; 
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.6);
+            color: white;
+            border: none;
+            padding: 15px;
+            cursor: pointer;
+            font-size: 18px;
+            border-radius: 50%;
+            z-index: 10;
+        }
+        
+        #prevBtn { left: 10px; }
+        #nextBtn { right: 10px; }
+        
+        button:hover {
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+
+        /* MEDIA QUERIES */
+        @media (max-width: 768px) {
+            .NavbarDestra {
+                display: none; 
+            }
+            .hamburger {
+                display: flex; 
+            }
+            #presentazione, #presentazioneLavori {
+                flex-direction: column;
+                text-align: center;
+            }
+            .testo-presentazione {
+                text-align: center;
+            }
+            .lista-competenze {
+                display: inline-block;
+                text-align: left;
+            }
+            #FotoMia {
+                width: 220px;
+                height: 220px;
+            }
+            .carousel-slide img {
+                width: 220px;
+                height: 150px; /* Scalato per schermi più piccoli */
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <header>
+        <nav class="navbar">
+            <ul class="logo-container">
+                <li><a href="#" style="font-weight: bold;"><img src="Foto/Firma.png" alt="Firma Giorgia" width="200px"></a></li>
+            </ul>
+            <ul class="NavbarDestra" id="NavbarDestra">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#Progetti">Project</a></li>
+                <li><a href="#Footer">Contact</a></li>
+            </ul>
+            <div class="hamburger" id="toggle">
+                <div class="hamburger_top"></div>
+                <div class="hamburger_center"></div>
+                <div class="hamburger_bottom"></div>
+            </div>
+        </nav>
+        <hr>
+        
+        <ul class="NavbarVerticale" id="NavbarVerticale">
+            <li><a href="#">Home</a></li>
+            <li><a href="#presentazione">About</a></li>
+            <li><a href="#Project">Project</a></li>
+            <li><a href="#Footer">Contact</a></li>
+        </ul>
+
+        <div id="presentazione">
+            <div class="testo-presentazione">
+                <p>Ciao, Sono Giorgia Pazienza!<br>
+                Vengo da Scicli, un comune siciliano in provincia di Ragusa. Attualmente vivo a Roma. 
+                Studentessa all'ultimo anno di Informatica presso l'Università degli Studi di Roma "Tor Vergata". <br>
+                In procinto di conseguire la laurea triennale, prevista presumibilmente per ottobre.<br>
+                Ho maturato una forte propensione verso lo sviluppo software e web, unita a una solida capacità di analisi e risoluzione di problemi. In particolare:</p>
+                <ul class="lista-competenze">
+                    <li>Sviluppo Software (UML) e Web (HTML, CSS, JAVASCRIPT, con focus attuale sull'apprendimento di React)</li>
+                    <li>Database</li>
+                    <li>Python: il linguaggio che utilizzo maggiormente, con cui ho più familiarità per la scrittura di codice e script.</li>
+                </ul>
+                
+                <p>Completa il mio profilo la conoscenza generale di Algoritmi, C, Comandi Bash, Java e l'utilizzo quotidiano di Git utilizzati durante il mio corso di studi.</p>
+            </div>
+            <div><img src="Foto/Foto_1.jpg" alt="Foto di Giorgia" id="FotoMia"></div>
+        </div>
+    </header>
+
+    <section>
+        <div id="presentazioneLavori">
+            <div><video src="Foto/Gif.mov" class="neon-media" controls></video></div>
+            <div class="testo-presentazione">
+                <p>Benvenuto sul mio sito web.<br>
+                Durante il mio percorso accademico ho consolidato solide competenze tecniche, trasformando la teoria in soluzioni pratiche attraverso lo sviluppo di progetti, approfondendo in particolare l'algoritmica, la modellazione software e la gestione dei dati.<br>
+                Scorri per scoprire di più.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="Progetti">
+        <div id="LinguaggiUtilizzati">
+            <p>I linguaggi che conosco sono:</p>
+            <div class="linguaggi">
+                <img src="https://img.shields.io/badge/c-%2300599C.svg?style=for-the-badge&logo=c&logoColor=white" alt="C">
+                <img src="https://img.shields.io/badge/git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white" alt="Git">
+                <img src="https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white" alt="GitHub">
+                <img src="https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white" alt="HTML5">
+                <img src="https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white" alt="Java">
+                <img src="https://img.shields.io/badge/javascript-%23F7DF1E.svg?style=for-the-badge&logo=javascript&logoColor=black" alt="JavaScript">
+                <img src="https://img.shields.io/badge/latex-%23008080.svg?style=for-the-badge&logo=latex&logoColor=white" alt="LaTeX">
+                <img src="https://img.shields.io/badge/mysql-%234479A1.svg?style=for-the-badge&logo=mysql&logoColor=white" alt="MySQL">
+                <img src="https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54" alt="Python">
+                <img src="https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white" alt="CSS3">
+            </div>
+        </div>
+
+        <div id="Project">
+            <p>Ecco i miei Progetti!</p>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-info">
+                        <h3>Antimafia DataBase</h3>
+                        <p>Progettazione e implementazione di una base di dati relazionale ottimizzata per mappare, archiviare e catalogare tutte le informazioni relative ad ogni detenuto associato alla criminalità organizzata.</p>
+                        <img src="Foto/DataBase.png" alt="Database Project">
+                    </div>
+                    <a href="https://github.com/Giorgia-Pazienza" target="_blank" class="project-link">Vedi Codice &rarr;</a>
+                </div>
+                <div class="project-card">
+                    <div class="project-info">
+                        <h3>Software Hackathon</h3>
+                        <p>
+                            Progettazione e modellazione architetturale di una piattaforma per la gestione di competizioni Hackathon. 
+                            Il progetto definisce l'intera struttura dell'applicazione utilizzando lo standard UML e copre l'intero ciclo di ingegneria del software.
+                        </p>
+                        <img src="Foto/Hackathon.png" alt="Hackathon Project">
+                    </div>
+                    <a href="https://github.com/Giorgia-Pazienza" target="_blank" class="project-link">Vedi Codice &rarr;</a>
+                </div>
+                <div class="project-card">
+                    <div class="project-info">
+                        <h3>ChatBot Turistico</h3>
+                        <p>Un assistente virtuale e interattivo progettato per guidare gli utenti alla scoperta di attrazioni, monumenti e curiosità locali all'interno di un sito web generico (es: sito comunale).</p>
+                        <video src="Foto/ChatBot.mov" controls></video>
+                    </div>
+                    <a href="https://github.com/Giorgia-Pazienza" target="_blank" class="project-link">Vedi Codice &rarr;</a>
+                </div>
+                <div class="project-card">
+                    <div class="project-info">
+                        <h3>GitHub</h3>
+                        <p>Esplora il mio profilo GitHub per consultare il mio percorso di studi triennale, troverai appunti, esercitazioni pratiche, spiegazioni e quant'altro...</p>
+                        <img src="Foto/Git.png" alt="GitHub Profile">
+                    </div>
+                    <a href="https://github.com/Giorgia-Pazienza" target="_blank" class="project-link">Vedi GitHub &rarr;</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="sezione-intermedia">
+            <p>Tra la Sicilia e Roma</p>
+            <div class="carousel-container">
+                <div class="carousel-slide">
+                    <img src="Foto/4.jpg" alt="Immagine 4">
+                    <img src="Foto/5.jpg" alt="Immagine 5">
+                    <img src="Foto/6.jpg" alt="Immagine 6">
+                    <img src="Foto/7.png" alt="Immagine 7">
+                    <img src="Foto/1.jpg" alt="Immagine 1">
+                    <img src="Foto/2.jpg" alt="Immagine 2">
+                </div>
+                <button id="prevBtn">❮</button>
+                <button id="nextBtn">❯</button>
+            </div>
+        </div>
+    </section>
+
+    <footer id="Footer">
+        <h3>Contattami</h3>
+        <div class="footer-contacts-wrapper">
+            <ul class="footer-contacts">
+                <li><img src="Foto/Instagram.png" alt="" width="30px"><b>Instagram:</b> <a href="https://instagram.com/giorgiapazienza_" target="_blank">@giorgiapazienza_</a></li>
+                <li><img src="Foto/LinkeIn.png" alt="" width="30px"><b>LinkedIn:</b> <a href="https://www.linkedin.com/in/giorgia-pazienza" target="_blank">Giorgia Pazienza</a></li>
+                <li><img src="Foto/Telefono.png" alt="" width="30px"><b>Telefono:</b> 3391121450</li>
+                <li><img src="Foto/Mail.png" alt="" width="30px"><b>E-mail:</b> <a href="mailto:giorgia.pazienza.lavoro@gmail.com">giorgia.pazienza.lavoro@gmail.com</a></li>
+                <li><img src="Foto/GitHub.png" alt="" width="30px"><b>GitHub:</b> <a href="https://github.com/Giorgia-Pazienza">Giorgia-Pazienza</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <script>
+        /* JS per Navbar responsive */
+        const toggle = document.getElementById("toggle");
+        const navbarVerticale = document.getElementById("NavbarVerticale");
+
+        toggle.addEventListener("click", () => {
+            navbarVerticale.classList.toggle("responsive");
+        });
+        
+        const links = navbarVerticale.getElementsByTagName('a');
+        for (let link of links) {
+            link.addEventListener('click', () => {
+                navbarVerticale.classList.remove('responsive');
+            });
+        }
+
+        /* JS per Carosello Foto */
+        const carouselSlide = document.querySelector('.carousel-slide');
+        const carouselImages = document.querySelectorAll('.carousel-slide img');
+
+        const prevBtn = document.querySelector('#prevBtn');
+        const nextBtn = document.querySelector('#nextBtn');
+
+        let counter = 0;
+
+        function updateCarousel() {
+            if (carouselImages.length === 0) return;
+            const imageWidth = carouselImages[0].getBoundingClientRect().width;
+            const gap = 15; 
+            carouselSlide.style.transform = 'translateX(' + (-(imageWidth + gap) * counter) + 'px)';
+        }
+
+        nextBtn.addEventListener('click', () => {
+            if (counter >= carouselImages.length - 3) {
+                counter = 0; 
+            } else {
+                counter++;
+            }
+            updateCarousel();
+        });
+
+        prevBtn.addEventListener('click', () => {
+            if (counter <= 0) {
+                counter = carouselImages.length - 3; 
+            } else {
+                counter--;
+            }
+            updateCarousel();
+        });
+
+        window.addEventListener('resize', updateCarousel);
+        window.addEventListener('load', updateCarousel);
+    </script>
+
+</body>
+</html>
