@@ -346,6 +346,19 @@
             border-radius: 50%;
             z-index: 10;
         }
+
+        .bottoneCV {
+            background-color: #990026; 
+            border: 2px solid white;
+            padding: 2rem;
+            border-radius: 12px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .bottoneCV:hover { 
+            transform: translateY(-5px); 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
         
         #prevBtn { left: 10px; }
         #nextBtn { right: 10px; }
@@ -500,6 +513,12 @@
             </div>
         </div>
 
+         <div>
+            <p>Esperienza</p>
+             <a href="Documenti/CV.pdf" download>
+                  <button class="bottoneCV" type="button">Scarica il mio CV</button>
+            </a>
+         </div>
         <div class="sezione-intermedia">
             <p>Tra la Sicilia e Roma</p>
             <div class="carousel-container">
@@ -518,7 +537,7 @@
     </section>
 
     <footer id="Footer">
-        <h3>Contattami</h3>
+        <h3>Contatti</h3>
         <div class="footer-contacts-wrapper">
             <ul class="footer-contacts">
                 <li><img src="Foto/Instagram.png" alt="" width="30px"><b>Instagram:</b> <a href="https://instagram.com/giorgiapazienza_" target="_blank">@giorgiapazienza_</a></li>
