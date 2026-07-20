@@ -353,13 +353,21 @@
             padding: 2rem;
             border-radius: 12px;
             transition: transform 0.3s, box-shadow 0.3s;
+            font-family: Times New Roman (serif);
         }
 
         .bottoneCV:hover { 
             transform: translateY(-5px); 
             box-shadow: 0 5px 15px rgba(0,0,0,0.3);
         }
-        
+
+       #Esperienza {
+            display: flex;
+            flex-direction: column; 
+            align-items: center;    
+            text-align: center;     
+            width: 100%;         
+        }
         #prevBtn { left: 10px; }
         #nextBtn { right: 10px; }
         
@@ -513,12 +521,11 @@
             </div>
         </div>
 
-         <div>
+         <div id="Esperienza">
             <p>Esperienza</p>
-             <a href="Documenti/CV.pdf" download>
-                  <button class="bottoneCV" type="button">Scarica il mio CV</button>
-            </a>
+             <a href="Documenti/CV.pdf" download><button class="bottoneCV" type="button">Scarica il mio CV</button></a>
          </div>
+        
         <div class="sezione-intermedia">
             <p>Tra la Sicilia e Roma</p>
             <div class="carousel-container">
