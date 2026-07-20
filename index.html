@@ -346,44 +346,49 @@
             border-radius: 50%;
             z-index: 10;
         }
-
-        /* Bottone CV */
-        .bottoneCV {
-            background-color: #990026; 
-            border: 2px solid white;
-            padding: 2rem;
-            border-radius: 12px;
-            transition: transform 0.3s, box-shadow 0.3s;
-            font-family: Times New Roman (serif);
-        }
-
-        .bottoneCV:hover { 
-            transform: translateY(-5px); 
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-        }
-
-       #Esperienza {
-            display: flex;
-            flex-direction: column; 
-            align-items: center;    
-            text-align: center;     
-            width: 100%;         
-        }
-
-        #Esperienza p { 
-            margin-bottom: 0.8rem; 
-            font-size: 1.5rem;
-            font-size: 0.95rem; 
-            margin-bottom: 1.5rem; 
-            line-height: 1.4;
-            opacity: 0.9;
-        }
         
         #prevBtn { left: 10px; }
         #nextBtn { right: 10px; }
         
         button:hover {
             background-color: rgba(0, 0, 0, 0.9);
+        }
+
+        /* BOTTONE CV */
+        .bottoneCV {
+            background-color: #990026; 
+            color: white; 
+            border: 2px solid white;
+            padding: 15px 30px; 
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-radius: 12px;
+            cursor: pointer; 
+            transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
+            font-family: 'Times New Roman', Times, serif;
+        }
+        
+        .bottoneCV:hover { 
+            transform: translateY(-5px); 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            background-color: #b3002d; 
+        }
+        
+        /* SEZIONE ESPERIENZA */
+        #Esperienza {
+            display: flex;
+            flex-direction: column; 
+            align-items: center;    
+            text-align: center;     
+            width: 100%;
+            margin: 60px 0; 
+            gap: 20px; 
+        }
+        
+        #Esperienza p { 
+            font-size: 2rem; 
+            font-weight: bold;
+            margin: 0;
         }
 
         /* MEDIA QUERIES */
