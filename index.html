@@ -250,6 +250,46 @@
             align-self: flex-start;
         }
 
+        /* SEZIONE ESPERIENZA */
+        #Esperienza {
+            display: flex;
+            flex-direction: column; 
+            align-items: center;    
+            justify-content: center;
+            text-align: center;     
+            width: 100%;
+            margin: 60px 0; 
+            gap: 25px; 
+        }
+        
+        #Esperienza p { 
+            font-size: 2rem; /* Uguale ad "Ecco i miei Progetti!" */
+            font-weight: bold;
+            margin: 0;
+            color: white;
+        }
+
+        /* BOTTONE CV */
+        .bottoneCV {
+            background-color: #990026; 
+            color: white; 
+            border: 2px solid white;
+            padding: 15px 35px; 
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-radius: 12px;
+            cursor: pointer; 
+            transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
+            font-family: 'Times New Roman', Times, serif;
+            display: inline-block;
+        }
+        
+        .bottoneCV:hover { 
+            transform: translateY(-5px); 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            background-color: #b3002d; 
+        }
+
         .sezione-intermedia {
             text-align: center;
             font-size: 1.6rem;
@@ -306,7 +346,7 @@
             text-decoration: underline;
         }
 
-        /* CAROSELLO FOTO */  
+        /* CAROSELLO FOTO */   
         .carousel-container {
             width: 90%;
             max-width: 1000px;
@@ -333,7 +373,7 @@
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
         
-        button {
+        .carousel-container button {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
@@ -350,45 +390,8 @@
         #prevBtn { left: 10px; }
         #nextBtn { right: 10px; }
         
-        button:hover {
+        .carousel-container button:hover {
             background-color: rgba(0, 0, 0, 0.9);
-        }
-
-        /* BOTTONE CV */
-        .bottoneCV {
-            background-color: #990026; 
-            color: white; 
-            border: 2px solid white;
-            padding: 15px 30px; 
-            font-size: 1.2rem;
-            font-weight: bold;
-            border-radius: 12px;
-            cursor: pointer; 
-            transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
-            font-family: 'Times New Roman', Times, serif;
-        }
-        
-        .bottoneCV:hover { 
-            transform: translateY(-5px); 
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            background-color: #b3002d; 
-        }
-        
-        /* SEZIONE ESPERIENZA */
-        #Esperienza {
-            display: flex;
-            flex-direction: column; 
-            align-items: center;    
-            text-align: center;     
-            width: 100%;
-            margin: 60px 0; 
-            gap: 20px; 
-        }
-        
-        #Esperienza p { 
-            font-size: 2rem; 
-            font-weight: bold;
-            margin: 0;
         }
 
         /* MEDIA QUERIES */
@@ -430,8 +433,9 @@
             </ul>
             <ul class="NavbarDestra" id="NavbarDestra">
                 <li><a href="#">Home</a></li>
-                <li><a href="#">About</a></li>
+                <li><a href="#presentazione">About</a></li>
                 <li><a href="#Progetti">Project</a></li>
+                <li><a href="#Esperienza">Esperienza</a></li>
                 <li><a href="#Footer">Contact</a></li>
             </ul>
             <div class="hamburger" id="toggle">
@@ -445,7 +449,8 @@
         <ul class="NavbarVerticale" id="NavbarVerticale">
             <li><a href="#">Home</a></li>
             <li><a href="#presentazione">About</a></li>
-            <li><a href="#Project">Project</a></li>
+            <li><a href="#Progetti">Project</a></li>
+            <li><a href="#Esperienza">Esperienza</a></li>
             <li><a href="#Footer">Contact</a></li>
         </ul>
 
@@ -537,7 +542,7 @@
             </div>
         </div>
 
-         <div id="Esperienza">
+        <div id="Esperienza">
             <p>Esperienza</p>
             <a href="Documenti/CV.pdf" download style="text-decoration: none;">
                 <button class="bottoneCV" type="button">Scarica il mio CV</button>
@@ -627,6 +632,9 @@
         window.addEventListener('resize', updateCarousel);
         window.addEventListener('load', updateCarousel);
     </script>
+
+</body>
+</html>
 
 </body>
 </html>
