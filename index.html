@@ -18,20 +18,8 @@
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-            position: relative;
-            z-index: 1; 
-            padding: 20px;
         }
 
-        #tsparticles {
-          position: fixed;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          z-index: -1; 
-          background-color: #990026; 
-        }
         
         header, section, footer {
             padding: 20px;
@@ -446,9 +434,6 @@
 </head>
 <body>
 
-    <!-- Contenitore dello sfondo -->
-    <div id="tsparticles"></div>
-
     <header>
         <nav class="navbar">
             <ul class="logo-container">
@@ -666,27 +651,6 @@
 
         window.addEventListener('resize', updateCarousel);
         window.addEventListener('load', updateCarousel);
-
-      tsParticles.load("tsparticles", {
-        preset: "links",
-        particles: {
-          color: { value: "#ffffff" }, // Colore dei punti
-          links: {
-            color: "#ffffff", // Colore degli archi
-            distance: 150, // Distanza massima per collegare i punti
-            enable: true,
-            opacity: 0.4,
-            width: 1
-          },
-          move: {
-            enable: true,
-            speed: 2 // Velocità di movimento
-          },
-          number: {
-            value: 80 // Numero di punti sullo schermo
-          }
-        }
-      });
 
     </script>
 
